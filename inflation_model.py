@@ -1,5 +1,4 @@
 import pandas as pd
-from google.cloud import bigquery
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error, r2_score
@@ -8,21 +7,12 @@ from sklearn.preprocessing import StandardScaler
 import joblib
 import numpy as np
 
-# Setup BigQuery client
-client = bigquery.Client()
+# **Commenting out BigQuery client and data fetch**
+# from google.cloud import bigquery
+# client = bigquery.Client()
 
-# Fetch data from BigQuery
-query = """
-SELECT 
-    year,
-    annual_inflation_rate, 
-    cumulative_inflation_rate, 
-    avg_cpi_present,
-    inflation_for_future
-FROM `inflation-trends.inflation_analysis.inflation_data_for_prediction`
-"""
-data = client.query(query).to_dataframe()
-
+# **Instead, load data from a local CSV file**
+data = pd.read_csv('inflation_data.csv')  # Ensure this file exists in your working directory
 
 # **✅ Check & Fix NaN in Target Variable**
 if data['inflation_for_future'].isnull().sum() > 0:
@@ -67,4 +57,3 @@ joblib.dump(scaler, 'scaler.pkl')  # Save the scaler for future use
 print(f"✅ Model Training Completed!")
 print(f"Mean Squared Error: {mse}")
 print(f"R-squared: {r2}")
-
