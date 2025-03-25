@@ -1,10 +1,8 @@
 from google.cloud import storage
-import os
+import streamlit as st
 
-credentials_path = os.getenv("BIGQUERY_CREDENTIALS_PATH")
+credentials_info = st.secrets["gcp_service_account"]
 
-if not credentials_path:
-    raise ValueError("BIGQUERY_CREDENTIALS_PATH environment variable is not set!")
 
 client = storage.Client.from_service_account_json("C:/Users/Hp/Desktop/inflation_trends/inflation-trends-8fc563087801.json")
 # Initialize GCP Storage Client

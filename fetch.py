@@ -1,11 +1,10 @@
 import requests
 import pandas as pd
-import json
-import os 
 from dotenv import load_dotenv
+import streamlit as st
 
 load_dotenv()
-FRED_API_KEY = os.getenv("FRED_API_KEY")
+FRED_API_KEY = st.secrets["fred_api"]["api_key"]
 
 if not FRED_API_KEY:
     raise ValueError("API Key not found! Set FRED_API_KEY in environment variables.")
