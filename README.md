@@ -9,6 +9,5 @@ This project provides predictions for inflation trends using machine learning. T
 Click here to visit the app
 https://inflation-trends.streamlit.app/
 
-![Image 1](images/inflation1.png)
-![Image 2](images/inflation2.png)
-![Image 3](images/inflation3.png)
+![Image 1](images/inflation1.PNG)
+
