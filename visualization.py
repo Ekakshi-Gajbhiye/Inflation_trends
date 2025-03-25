@@ -3,9 +3,7 @@ import seaborn as sns
 import pandas as pd
 from preprocessing import data
 
-# Assuming 'data' is the DataFrame that contains your preprocessed data
-
-# 1. Line plot for Annual Inflation Rate over the years
+# Rate over the years
 plt.figure(figsize=(10, 6))
 plt.plot(data['year'], data['annual_inflation_rate'], marker='o', color='b', label='Annual Inflation Rate')
 plt.title('Annual Inflation Rate Over the Years')
