@@ -27,7 +27,11 @@ def load_data():
     return df
 
 # Load data
-data = load_data()
+try:
+    data = load_data()
+except Exception as e:
+    st.error(f"Error loading data from BigQuery: {e}")
+    data = pd.DataFrame()
 
 # Function to calculate future value of money in INR
 def calculate_future_value(present_value, rate, years):
