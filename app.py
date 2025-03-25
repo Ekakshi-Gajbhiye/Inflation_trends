@@ -57,19 +57,19 @@ def predict_inflation(year, present_value):
     return predicted_rate, annual_inflation_rate, predicted_cumulative_inflation, avg_cpi_present, future_value
 
 
-st.title("Inflation & Future Money Value Prediction (INR)")
+st.title("Inflation & Future Goods Value Prediction (INR)")
 
 year = st.number_input("Enter Year for Prediction", min_value=2025, max_value=2100, step=1, format="%d")
-present_value = st.number_input("Enter Present Money Value (₹)", min_value=1.0, step=1.0, format="%.2f")
+present_value = st.number_input("Enter goods Value(₹)", min_value=1.0, step=1.0, format="%.2f")
 
-if st.button("Predict Inflation & Money Value"):
+if st.button("Predict Inflation & Goods Value"):
     predicted_rate, ann_inf, pred_cum_inf, avg_cpi, future_value = predict_inflation(year, present_value)
 
     st.subheader(f"Predicted Inflation Rate for {year}: **{predicted_rate:.2f}%**")
     st.write(f"Annual Inflation Rate (Avg Last 5 Years): **{ann_inf:.2f}%**")
     st.write(f"Predicted Cumulative Inflation Rate: **{pred_cum_inf:.2f}%**")
     st.write(f"Average CPI: **{avg_cpi:.2f}**")
-    st.subheader(f"Future Money Value in {year}: **₹{future_value:,.2f}**")
+    st.subheader(f"Future Value of Goods in {year}: **₹{future_value:,.2f}**")
 
     data_updated = data.copy()
     new_row = pd.DataFrame({"year": [year], "cumulative_inflation_rate": [pred_cum_inf]})
